@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: null, // Set the appBar property to null
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Color.fromARGB(255, 240, 240, 240),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(children: [
@@ -88,15 +88,6 @@ class _LoginPageState extends State<LoginPage> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   //button
-                  child: IconButton(
-                    onPressed: () {
-                      //Get.to(HomePage());
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Color.fromARGB(255, 1, 0, 0),
-                    ),
-                  ),
                 ),
               ),
               Center(
@@ -115,9 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     //const SizedBox(height: 1, width: 20,),
 
-                    //PlodCat (logo) text
-                    Text('PlodCat',
-                        style: GoogleFonts.lobsterTwo(fontSize: 38)),
+                    Text('Vulnerabilidad de viviendas',
+                        style: GoogleFonts.aboreto(fontSize: 38)),
 
                     const SizedBox(
                       height: 20,
@@ -125,8 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
 
                     //(Welcome!) text
-                    Text('Welcome back!',
-                        style: GoogleFonts.heebo(fontSize: 20)),
+                    Text('Bienvenido', style: GoogleFonts.heebo(fontSize: 20)),
 
                     const SizedBox(
                       height: 20,
@@ -148,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                     //password textfield
                     MyTextField(
                       controller: passwordController,
-                      hintText: 'Password',
+                      hintText: 'Contraseña',
                       obscureText: true,
                     ),
 
@@ -184,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     //log in button
                     MyButton(
-                      text: 'Sign In',
+                      text: 'Ingresar',
                       onTap: () {
                         signUserIn();
                       },
@@ -210,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
-                              'Not a PlodCat user?',
+                              '¿No tienes una cuenta?',
                               style: TextStyle(
                                   color: Color.fromARGB(183, 66, 66, 66)),
                             ),
@@ -253,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       },
                       child: Text(
-                        'Register now',
+                        'Registrarse',
                         style: GoogleFonts.robotoSlab(
                           fontSize: 15,
                           textStyle: TextStyle(

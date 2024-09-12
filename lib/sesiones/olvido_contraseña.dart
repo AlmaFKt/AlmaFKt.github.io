@@ -29,7 +29,7 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
         builder: (context) {
           return AlertDialog(
             content: Text(
-                'If the email is registered, a password reset email has been sent to ${emailController.text.trim()}'),
+                'Si el email esta registrado, el correo se enviará entonces a ${emailController.text.trim()}'),
           );
         },
       );
@@ -49,7 +49,7 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 247, 245, 246),
+      backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 85, 52, 68),
         elevation: 0,
@@ -111,7 +111,7 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
             ),
             MaterialButton(
               onPressed: pwReset,
-              child: Text('Send email'),
+              child: Text('Enviar email'),
               color: Color.fromARGB(255, 236, 201, 201),
             ),
           ],

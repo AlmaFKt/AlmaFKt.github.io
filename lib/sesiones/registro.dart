@@ -99,12 +99,21 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Color.fromARGB(255, 240, 240, 240),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
+                IconButton(
+                  onPressed: () {
+                    Get.to(LoginPage());
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Color.fromARGB(255, 1, 0, 0),
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -122,7 +131,8 @@ class RegisterPage extends StatelessWidget {
                 //const SizedBox(height: 1, width: 20,),
 
                 //PlodCat (logo) text
-                Text('PlodCat', style: GoogleFonts.lobsterTwo(fontSize: 38)),
+                Text('Vulnerabilidad de viviendas',
+                    style: GoogleFonts.lobsterTwo(fontSize: 38)),
 
                 const SizedBox(
                   height: 12,
@@ -130,7 +140,8 @@ class RegisterPage extends StatelessWidget {
                 ),
 
                 //(Welcome!) text
-                Text('Join us!', style: GoogleFonts.heebo(fontSize: 20)),
+                Text('Ingresa tus datos',
+                    style: GoogleFonts.heebo(fontSize: 20)),
 
                 const SizedBox(
                   height: 15,
@@ -140,7 +151,7 @@ class RegisterPage extends StatelessWidget {
                 //username textfield
                 MyTextField(
                   controller: usernameController,
-                  hintText: 'Username',
+                  hintText: 'Nombre',
                   obscureText: false,
                 ), // u can find the code for this object in components
 
@@ -163,7 +174,7 @@ class RegisterPage extends StatelessWidget {
                 //password textfield
                 MyTextField(
                   controller: passwordController,
-                  hintText: 'Password',
+                  hintText: 'Contraseña',
                   obscureText: true,
                 ),
 
@@ -174,7 +185,7 @@ class RegisterPage extends StatelessWidget {
 
                 MyTextField(
                   controller: confirmPasController,
-                  hintText: 'Password confirm',
+                  hintText: 'Confirmación de contraseña',
                   obscureText: true,
                 ),
 
@@ -184,7 +195,7 @@ class RegisterPage extends StatelessWidget {
 
                 //log in button
                 MyButton(
-                  text: 'Register', // Add the text parameter for the button
+                  text: 'Registrarse',
                   onTap: () {
                     registerUserIn(context);
                   },
@@ -209,7 +220,7 @@ class RegisterPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'Already a PlodCat user?',
+                          '¿Ya tienes una cuenta?',
                           style:
                               TextStyle(color: Color.fromARGB(183, 66, 66, 66)),
                         ),
@@ -252,7 +263,7 @@ class RegisterPage extends StatelessWidget {
                   },
                   //GestureD is for making everythin that its inside a button
                   child: Text(
-                    "Sign in",
+                    "Ingresar",
                     style: GoogleFonts.robotoSlab(
                       fontSize: 15,
                       textStyle:
