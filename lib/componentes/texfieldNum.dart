@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class MyTextField extends StatelessWidget {
+class TextFieldNum extends StatelessWidget {
   final controller; //this is to have acces to what the user typed in the textField
   final String hintText;
   final bool obscureText;
+  final List<TextInputFormatter>? inputFormatters; // Add this line
+  final TextInputType? keyboardType;
 
-  const MyTextField({
-    super.key,
-    required this.controller, //required means that needs a default value, it can't be null
-    required this.hintText,
-    required this.obscureText,
-  });
+  const TextFieldNum(
+      {super.key,
+      required this.controller, //required means that needs a default value, it can't be null
+      required this.hintText,
+      required this.obscureText,
+      this.inputFormatters, // Add this line
+      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,8 @@ class MyTextField extends StatelessWidget {
             hintText:
                 hintText, //String to give a hint to the user of what he should type in
             hintStyle: TextStyle(color: Color.fromARGB(211, 146, 145, 145))),
+        inputFormatters: inputFormatters,
+        keyboardType: keyboardType,
       ),
     );
   }

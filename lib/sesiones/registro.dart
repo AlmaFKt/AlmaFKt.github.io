@@ -1,5 +1,7 @@
+import 'package:argamasa_mamposteria/componentes/texfieldNum.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../componentes/boton.dart';
@@ -15,6 +17,12 @@ class RegisterPage extends StatelessWidget {
   final passwordController = TextEditingController();
   final confirmPasController = TextEditingController(); //we added this 2 TextEd
   final emailController = TextEditingController();
+  final nivelesController = TextEditingController();
+  final calleController = TextEditingController();
+  final numeroController = TextEditingController();
+  final coloniaController = TextEditingController();
+  final estadoController = TextEditingController();
+  final municipioController = TextEditingController();
 
   void updateUserName(String newName) async {
     User? user = FirebaseAuth.instance.currentUser;
@@ -105,38 +113,30 @@ class RegisterPage extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                IconButton(
-                  onPressed: () {
-                    Get.to(LoginPage());
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Color.fromARGB(255, 1, 0, 0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 16),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      onPressed: () {
+                        Get.to(LoginPage());
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Color.fromARGB(255, 1, 0, 0),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                //Logo
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'lib/Images/catLogo.webp',
-                      height: 70,
-                      width: 250,
-                    ),
-                  ],
-                ),
-                //const SizedBox(height: 1, width: 20,),
 
-                //PlodCat (logo) text
                 Text('Vulnerabilidad de viviendas',
-                    style: GoogleFonts.lobsterTwo(fontSize: 38)),
+                    style: GoogleFonts.aboreto(fontSize: 38)),
 
                 const SizedBox(
                   height: 12,
-                  width: 20,
                 ),
 
                 //(Welcome!) text
@@ -145,33 +145,118 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(
                   height: 15,
-                  width: 20,
                 ), // this makes a type of space betweeno your objects
 
                 //username textfield
                 MyTextField(
                   controller: usernameController,
-                  hintText: 'Nombre',
+                  hintText: 'Nombre Completo',
                   obscureText: false,
-                ), // u can find the code for this object in components
+                ),
 
                 const SizedBox(
                   height: 13,
-                  width: 20,
+                ),
+
+                TextFieldNum(
+                  controller: nivelesController,
+                  hintText: 'Niveles de la vivienda',
+                  obscureText: false,
+                  inputFormatters: [
+                    FilteringTextInputFormatter
+                        .digitsOnly, // Solo permite dígitos
+                  ],
+                  keyboardType: TextInputType.number,
+                ),
+
+                const SizedBox(
+                  height: 13,
+                ),
+
+                TextFieldNum(
+                  controller: emailController,
+                  hintText: 'CP',
+                  obscureText: false,
+                  inputFormatters: [
+                    FilteringTextInputFormatter
+                        .digitsOnly, // Solo permite dígitos
+                  ],
+                  keyboardType: TextInputType.number,
+                ),
+
+                const SizedBox(
+                  height: 13,
+                ),
+
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 3, // 3/4 of the space
+                      child: MyTextField(
+                        controller: calleController,
+                        hintText: 'Calle',
+                        obscureText: false,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1, // 1/4 of the space
+                      child: TextFieldNum(
+                        controller: numeroController,
+                        hintText: 'Número',
+                        obscureText: false,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(
+                  height: 13,
+                ),
+
+                MyTextField(
+                  controller: coloniaController,
+                  hintText: 'Colonia',
+                  obscureText: false,
+                ),
+
+                const SizedBox(
+                  height: 13,
+                ),
+
+                MyTextField(
+                  controller: estadoController,
+                  hintText: 'Estado',
+                  obscureText: false,
+                ),
+
+                const SizedBox(
+                  height: 13,
+                ),
+
+                MyTextField(
+                  controller: municipioController,
+                  hintText: 'Municipio',
+                  obscureText: false,
+                ),
+
+                const SizedBox(
+                  height: 13,
                 ),
 
                 MyTextField(
                   controller: emailController,
                   hintText: 'Email',
                   obscureText: false,
-                ), // u can find the code for this object in components
+                ),
 
                 const SizedBox(
                   height: 13,
-                  width: 20,
                 ),
 
-                //password textfield
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Contraseña',
@@ -180,7 +265,6 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(
                   height: 13,
-                  width: 20,
                 ),
 
                 MyTextField(
@@ -203,10 +287,9 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(
                   height: 25,
-                  width: 20,
                 ),
 
-                //already have an account? Register now
+                //already have an account? Log in now
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -214,7 +297,7 @@ class RegisterPage extends StatelessWidget {
                       Expanded(
                         child: Divider(
                           thickness: 0.5,
-                          color: Color.fromARGB(255, 163, 76, 127),
+                          color: Color.fromARGB(255, 5, 5, 5),
                         ),
                       ),
                       Padding(
@@ -228,7 +311,7 @@ class RegisterPage extends StatelessWidget {
                       Expanded(
                         child: Divider(
                           thickness: 0.5,
-                          color: Color.fromARGB(255, 163, 76, 127),
+                          color: Color.fromARGB(255, 5, 5, 5),
                         ),
                       ),
                     ],
@@ -237,7 +320,6 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(
                   height: 20,
-                  width: 20,
                 ),
 
                 //Register now text
@@ -254,12 +336,7 @@ class RegisterPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     // Navigate to the logIn page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
-                      ),
-                    );
+                    Get.to(LoginPage());
                   },
                   //GestureD is for making everythin that its inside a button
                   child: Text(
@@ -267,7 +344,7 @@ class RegisterPage extends StatelessWidget {
                     style: GoogleFonts.robotoSlab(
                       fontSize: 15,
                       textStyle:
-                          TextStyle(color: Color.fromARGB(255, 66, 48, 224)),
+                          TextStyle(color: Color.fromARGB(255, 160, 55, 29)),
                     ),
                   ),
                 ),
@@ -285,13 +362,11 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                //more stuff if u want 2 c; :c
               ],
             ),
           ),
         ),
       ),
-    ); //In this page we are only gonna have a blank scaffold
+    );
   }
 }

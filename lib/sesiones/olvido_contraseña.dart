@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../componentes/textfield.dart';
+import 'inicio_sesion.dart';
 
 class ForgotPwPage extends StatefulWidget {
   const ForgotPwPage({Key? key}) : super(key: key);
@@ -50,25 +52,39 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 85, 52, 68),
-        elevation: 0,
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
+              padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  onPressed: () {
+                    Get.to(LoginPage());
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Color.fromARGB(255, 1, 0, 0),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    height: 40,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'lib/Images/Smart_cat.png',
-                        height: 180,
+                        'assets/mail.png',
+                        height: 80,
                         width: 250,
                       ),
                     ],
@@ -111,8 +127,11 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
             ),
             MaterialButton(
               onPressed: pwReset,
-              child: Text('Enviar email'),
-              color: Color.fromARGB(255, 236, 201, 201),
+              child: Text(
+                'Enviar email',
+                style: TextStyle(color: Color.fromARGB(246, 255, 255, 255)),
+              ),
+              color: Color.fromARGB(255, 160, 55, 29),
             ),
           ],
         ),

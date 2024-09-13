@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../Content/home.dart';
 import '../componentes/boton.dart';
 import '../componentes/textfield.dart';
 import 'olvido_contraseña.dart';
@@ -49,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
 
       // Navigate to the home page
-      //Get.to(() => HomePage());
+      Get.to(() => HomePage());
     } on FirebaseAuthException catch (e) {
       // Close the loading indicator
       Navigator.pop(context);
@@ -87,24 +88,28 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(top: 16, left: 16),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  //button
                 ),
               ),
               Center(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 40,
+                    ),
                     //Logo
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'lib/Images/catLogo.webp',
-                          height: 70,
+                          'assets/vivienda.png',
+                          height: 90,
                           width: 250,
                         ),
                       ],
                     ),
-                    //const SizedBox(height: 1, width: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
 
                     Text('Vulnerabilidad de viviendas',
                         style: GoogleFonts.aboreto(fontSize: 38)),
@@ -120,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 20,
                       width: 20,
-                    ), // this makes a type of space betweeno your objects
+                    ), // this makes a type of space between your objects
 
                     //username textfield
                     MyTextField(
@@ -159,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                             Text(
                               '¿Olvidaste tu contraseña?',
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 97, 81, 180)),
+                                  color: Color.fromARGB(255, 160, 55, 29)),
                             ),
                           ],
                         ),
@@ -192,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                           Expanded(
                             child: Divider(
                               thickness: 0.5,
-                              color: Color.fromARGB(255, 163, 76, 127),
+                              color: Color.fromARGB(255, 76, 103, 163),
                             ),
                           ),
                           Padding(
@@ -207,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                           Expanded(
                             child: Divider(
                               thickness: 0.5,
-                              color: Color.fromARGB(255, 163, 76, 127),
+                              color: Color.fromARGB(255, 76, 103, 163),
                             ),
                           ),
                         ],
@@ -233,20 +238,14 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: () {
                         // Navigate to the register page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                RegisterPage(), // Replace with your RegisterPage widget
-                          ),
-                        );
+                        Get.to(RegisterPage());
                       },
                       child: Text(
                         'Registrarse',
                         style: GoogleFonts.robotoSlab(
                           fontSize: 15,
                           textStyle: TextStyle(
-                              color: Color.fromARGB(255, 120, 109, 223)),
+                              color: Color.fromARGB(255, 160, 55, 29)),
                         ),
                       ),
                     ),
@@ -264,13 +263,11 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-
-                    //more stuff if u want 2 c;
                   ],
                 ),
               ),
             ]),
           ),
-        )); //In this page we are only gonna have a blank scaffold
+        ));
   }
 }
