@@ -10,6 +10,6 @@ class ArgamasaPage extends StatefulWidget {
 class _ArgamasaPageState extends State<ArgamasaPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold();
   }
 }
