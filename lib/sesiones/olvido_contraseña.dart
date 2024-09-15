@@ -53,87 +53,93 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 240, 240),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0, left: 16.0),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  onPressed: () {
-                    Get.to(LoginPage());
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Color.fromARGB(255, 1, 0, 0),
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            constraints: BoxConstraints(maxWidth: 700),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      onPressed: () {
+                        Get.to(LoginPage());
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Color.fromARGB(255, 1, 0, 0),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Row(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        'assets/mail.png',
-                        height: 80,
-                        width: 250,
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/mail.png',
+                            height: 80,
+                            width: 250,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Ingresa tu E-mail',
+                        style: GoogleFonts.breeSerif(fontSize: 20),
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'Ingresa tu E-mail',
-                    style: GoogleFonts.breeSerif(fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Text(
+                    'Mandaremos un link para resetear tu contraseña',
+                    style: GoogleFonts.heebo(fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 35,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: MyTextField(
+                    controller: emailController,
+                    hintText: 'Email',
+                    obscureText: false,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                MaterialButton(
+                  onPressed: pwReset,
+                  child: Text(
+                    'Enviar email',
+                    style: TextStyle(color: Color.fromARGB(246, 255, 255, 255)),
+                  ),
+                  color: Color.fromARGB(255, 160, 55, 29),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Text(
-                'Mandaremos un link para resetear tu contraseña',
-                style: GoogleFonts.heebo(fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(
-              height: 35,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: MyTextField(
-                controller: emailController,
-                hintText: 'Email',
-                obscureText: false,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            MaterialButton(
-              onPressed: pwReset,
-              child: Text(
-                'Enviar email',
-                style: TextStyle(color: Color.fromARGB(246, 255, 255, 255)),
-              ),
-              color: Color.fromARGB(255, 160, 55, 29),
-            ),
-          ],
+          ),
         ),
       ),
     );

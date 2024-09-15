@@ -1,3 +1,4 @@
+import 'package:argamasa_mamposteria/componentes/boton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: Text(
-          'Vulnerabilidad de Viviendas',
-          style: GoogleFonts.aboreto(fontSize: 18, fontWeight: FontWeight.bold),
-        )),
-        backgroundColor: Color.fromARGB(255, 125, 163, 206),
-        /*actions: [
+      /*actions: [
           IconButton(
             onPressed: () {
            async {
@@ -39,125 +33,98 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],*/
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(
-                  'Información sobre la Vulnerabilidad de Viviendas',
-                  style: GoogleFonts.aBeeZee(fontSize: 30),
-                ),
-              ),
-              SizedBox(height: 16),
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Color(0xFFFFE0B2),
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 700),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Baja Vulnerabilidad:',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    Center(
+                      child: Text(
+                        'Información sobre la Vulnerabilidad de Viviendas',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    Text(
-                      'Las viviendas con baja vulnerabilidad son aquellas que están bien construidas y tienen una alta resistencia a los desastres naturales.',
+                    SizedBox(height: 16),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFE0B2),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Baja Vulnerabilidad:',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            'Las viviendas con baja vulnerabilidad son aquellas que están bien construidas y tienen una alta resistencia a los desastres naturales.',
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            'Media Vulnerabilidad:',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            'Las viviendas con media vulnerabilidad tienen algunas deficiencias en su construcción que las hacen susceptibles a daños moderados en caso de desastres naturales.',
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            'Alta Vulnerabilidad:',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            'Las viviendas con alta vulnerabilidad son aquellas que están mal construidas y tienen una baja resistencia a los desastres naturales.',
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Center(
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          MyButton(
+                            text: 'Cuestionario mamposteria',
+                            onTap: () {
+                              Get.to(MamposteriaPage());
+                            },
+                          ),
+                          MyButton(
+                            text: 'Cuestionario argamasa',
+                            onTap: () {
+                              Get.to(ArgamasaPage());
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 16),
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Color(0xFFFFE0B2),
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Media Vulnerabilidad:',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Las viviendas con media vulnerabilidad tienen una construcción moderada y pueden resistir algunos desastres naturales, pero pueden sufrir daños.',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 16),
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Color(0xFFFFE0B2),
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Alta Vulnerabilidad:',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Las viviendas con alta vulnerabilidad son aquellas que están mal construidas y tienen una baja resistencia a los desastres naturales.',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.to(MamposteriaPage());
-                    },
-                    child: Text('Cuestionario de Mampostería'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.to(ArgamasaPage());
-                    },
-                    child: Text('Cuestionario de Argamasa'),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
         ),
       ),

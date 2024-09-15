@@ -1,3 +1,4 @@
+import 'package:argamasa_mamposteria/Content/pdf/mamposteriaPDF.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -60,7 +61,51 @@ class _MamposteriaPageState extends State<MamposteriaPage> {
             4),
       ]),
     ]),
-    //
+    Topic('IRREGULARIDAD DE ALTURA', [
+      Question('1', [
+        Option(
+            'La mayoría de los muros estructurales son continuosdesde la cimentación hasta la cubierta.',
+            1),
+      ]),
+      Question('2', [
+        Option(
+            'Menos de la mitad de los muros de carga y/o columnas de la vivienda presentan discontinuidades desde la cimentación hasta la cubierta o azotea',
+            2),
+      ]),
+      Question('4', [
+        Option(
+            'Más de la mitad de los muros de carga y/o columnas de la vivienda presentan discontinuidades desde la cimentación hasta la cubierta o azotea.',
+            4),
+        Option(
+            'Las discontinuidades pueden ser tanta eliminación en los niveles inferiores o cambio de un sistema de muros en los sistemas superiores o columnas en el primer nivel o variación en las alturas',
+            4),
+      ]),
+    ]),
+    Topic('CANTIDAD DE MUROS EN DOS DIRECCIONES', [
+      Question('1', [
+        Option(
+            'Existen muros de carga en las dos direcciones de la vivienda.', 1),
+        Option(
+            'La longitud total de muros en las dos direcciones principales de la edificación (x,y) representativa de la cantidad de muros de la edificación es grande.',
+            1),
+      ]),
+      Question('2', [
+        Option(
+            'La mayoría de los muros se concentran en una sola dirección, aunque existen unos o varios en la otra dirección',
+            2),
+        Option(
+            'La longitud de los muros en la dirección de menor cantidad de ellos es notablemente inferior a la otra dirección.',
+            2),
+      ]),
+      Question('4', [
+        Option(
+            'Más del 70% de los muros están en una sola dirección y muy pocos muros confinados o reforzados dejando una dirección débil',
+            4),
+        Option(
+            'La longitud total de muros estructurales en cualquier dirección es muy pobre.',
+            4),
+      ]),
+    ]),
   ];
 
   Map<String, Option?> scores = {};
@@ -281,6 +326,7 @@ class _MamposteriaPageState extends State<MamposteriaPage> {
       ),
       onPressed: () {
         _calculateTotalScore();
+        Get.to(Mamposteriapdf(totalScore: totalScore));
       },
     );
   }

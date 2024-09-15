@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Vulnerabilidad de viviendas',
       debugShowCheckedModeBanner: false,
-      home: MamposteriaPage(),
+      home: LoginPage(),
     );
   }
 }
