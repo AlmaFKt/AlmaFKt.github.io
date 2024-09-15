@@ -1,3 +1,4 @@
+import 'package:argamasa_mamposteria/Content/pdf/mamposteriaPDF.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -281,6 +282,7 @@ class _MamposteriaPageState extends State<MamposteriaPage> {
       ),
       onPressed: () {
         _calculateTotalScore();
+        Get.to(Mamposteriapdf(totalScore: totalScore));
       },
     );
   }

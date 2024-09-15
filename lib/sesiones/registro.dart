@@ -15,7 +15,7 @@ class RegisterPage extends StatelessWidget {
   //Text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasController = TextEditingController(); //we added this 2 TextEd
+  final confirmPasController = TextEditingController();
   final emailController = TextEditingController();
   final nivelesController = TextEditingController();
   final calleController = TextEditingController();

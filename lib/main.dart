@@ -1,5 +1,6 @@
 import 'package:argamasa_mamposteria/Content/Cuestionarios/mamposteria_cuestionario.dart';
 import 'package:argamasa_mamposteria/Content/home.dart';
+import 'package:argamasa_mamposteria/Content/pdf/mamposteriaPDF.dart';
 import 'package:argamasa_mamposteria/sesiones/inicio_sesion.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
